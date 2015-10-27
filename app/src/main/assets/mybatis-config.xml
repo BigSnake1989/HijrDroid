@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="metadata" type="id.co.hijr.app.core.Metadata" />
+		<typeAlias alias="entity" type="id.co.hijr.app.core.Entity" />
+		<!-- Start your aliases below -->
+		<typeAlias alias="user" type="id.co.hijr.app.domain.User" />
+		<typeAlias alias="role" type="id.co.hijr.app.domain.Role" />
+
+	</typeAliases>
+	<environments default='development'>
+		<environment id='development'>
+			<transactionManager type='JDBC' />
+			<dataSource type='UNPOOLED'>
+				<property name='driver' value='org.sqldroid.SQLDroidDriver'/>
+				<property name='url' value='jdbc:sqlite:/data/data/id.co.hijr.app/databases/hipos.db'/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="entity.xml" />
+		<mapper resource="metadata.xml" />
+		<!-- Start your mapping below -->
+		<mapper resource="user.xml" />
+		<mapper resource="role.xml" />
+
+	</mappers>
+
+	
+</configuration>
