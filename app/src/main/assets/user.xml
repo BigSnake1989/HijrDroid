@@ -72,13 +72,18 @@
 		<include refid="id.co.hijr.app.core.Metadata.value"/>)
 	</insert>
 	
-	<!-- Mengembalikan record/data yang status deleted menjadi visible -->
+	<!-- Mengubah status record/data menjadi deleted -->
 	<delete id="delete" parameterType="int">
 		update tbl_user set 
 		<include refid="id.co.hijr.app.core.Metadata.delete"/>
 		where user_id=#{id}
-	</delete>		
-	
+	</delete>
+
+	<!-- Menghapus permanent record/data dari database -->
+	<delete id="deletePermanent" parameterType="int">
+		delete from tbl_user where user_id=#{id}
+	</delete>
+
 	<!-- Mengembalikan record/data yang status deleted menjadi visible -->
 	<delete id="restore" parameterType="int">
 		update tbl_user set 

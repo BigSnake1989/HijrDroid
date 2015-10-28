@@ -63,6 +63,10 @@
 		<include refid="id.co.hijr.app.core.Metadata.delete"/>
 		where role_id=#{id}
 	</delete>
+
+	<delete id="deletePermanent" parameterType="int">
+		delete from tbl_role where role_id=#{id}
+	</delete>
 	
 	<delete id="restore" parameterType="int">
 		update tbl_role set 

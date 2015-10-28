@@ -38,7 +38,16 @@ public abstract class DaoBase<T extends Entity > extends QueryBase implements Da
 	
 	@Override
 	public void delete(int id){
-		getSqlSession().delete(getNamespace()+".delete", id);
+		delete(id, false);
+	}
+
+	@Override
+	public void delete(int id, boolean permanent){
+		if(permanent) {
+			getSqlSession().delete(getNamespace() + ".deletePermanent", id);
+		}else{
+			getSqlSession().delete(getNamespace() + ".delete", id);
+		}
 	}
 	
 	@Override

@@ -20,7 +20,11 @@ public class DateTypeHandler extends BaseTypeHandler<Date> {
 	public void setParameter(PreparedStatement ps, int i,
 			Date parameter, JdbcType jdbcType) throws SQLException {
 		// TODO Auto-generated method stub
-		ps.setString(i, sdf.format(parameter));
+		if(parameter != null) {
+			ps.setString(i, sdf.format(parameter));
+		}else{
+			ps.setString(i, null);
+		}
 	}
 	
 	@Override

@@ -37,6 +37,14 @@ public interface DaoGeneric<T> {
 	 */
 	public void delete(int id);
 	/**
+	 *
+	 * Set status record deleted, data masih ada tapi tidak terlihat di aplikasi
+	 *
+	 * @param id ID record
+	 * @param permanent default is false, set true to remove from database permanently
+	 */
+	public void delete(int id, boolean permanent);
+	/**
 	 * 
 	 * Mengembalikan status record deleted seperti sebelumnya agar terlihat di aplikasi
 	 * 
