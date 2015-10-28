@@ -2,6 +2,8 @@ package id.co.hijr.app.core;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 import java.io.FileOutputStream;
@@ -20,10 +22,34 @@ public class MainApp extends Application{
     public void onCreate() {
         super.onCreate();
         MainApp.context = getApplicationContext();
-        copyDataBase("hipos.db");
+        //copyDataBase("app.db");
+        //copyDataBase("app.db","/sdcard/");
     }
 
-    private static void copyDataBase(String dbname)
+    private void copyDataBase(String dbname)
+    {
+        String dbpath = "/data/data/"+ MainApp.getAppContext().getPackageName()+"/databases/";
+        copyDataBase(dbname, dbpath);
+    }
+
+    /**
+     * Check if the database exist and can be read.
+     *
+     * @return true if it exists and can be read, false if it doesn't
+     */
+    private boolean checkDataBase(String dbfile) {
+        SQLiteDatabase checkDB = null;
+        try {
+            checkDB = SQLiteDatabase.openDatabase(dbfile, null,
+                    SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
+        } catch (SQLiteException e) {
+            // database doesn't exist yet.
+        }
+        return checkDB != null;
+    }
+
+    private void copyDataBase(String dbname, String dbpath)
     {
         Log.i("Database", "New database is being copied to device!");
         byte[] buffer = new byte[1024];
@@ -33,11 +59,15 @@ public class MainApp extends Application{
         InputStream myInput = null;
         try
         {
-            MainApp.getAppContext().openOrCreateDatabase(dbname, MODE_PRIVATE, null);
+            String dbfile = dbpath + dbname;
+            if(!checkDataBase(dbfile)) {
+                Log.i("Database","exist in " + dbfile);
+                MainApp.getAppContext().openOrCreateDatabase(dbname, MODE_PRIVATE, null);
+            }
             myInput = MainApp.getAppContext().getAssets().open(dbname);
             // transfer bytes from the inputfile to the
             // outputfile
-            String dbfile = "/data/data/"+ MainApp.getAppContext().getPackageName()+"/databases/"+ dbname;
+
             Log.i("Database",dbfile);
             myOutput =new FileOutputStream(dbfile);
             while((length = myInput.read(buffer)) > 0)
