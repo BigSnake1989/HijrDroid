@@ -87,15 +87,14 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="javassist-3.17.1-GA" level="project" />
     <orderEntry type="library" exported="" name="log4j-1.2.17" level="project" />
     <orderEntry type="library" exported="" name="asm-3.3.1" level="project" />
-    <orderEntry type="library" exported="" name="slf4j-log4j12-1.7.5" level="project" />
     <orderEntry type="library" exported="" name="cglib-2.2.2" level="project" />
+    <orderEntry type="library" exported="" name="slf4j-log4j12-1.7.5" level="project" />
     <orderEntry type="library" exported="" name="multidex-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="sqldroid-1.0.3" level="project" />
     <orderEntry type="library" exported="" name="droid-java-beans-1.0.1" level="project" />
