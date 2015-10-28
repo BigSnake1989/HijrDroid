@@ -1,12 +1,12 @@
 package id.co.hijr.app;
 
 import android.os.Build;
+import android.widget.ListView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import id.co.hijr.app.core.MainApp;
@@ -15,7 +15,7 @@ import id.co.hijr.app.core.MainApp;
  * Created by refitgustaroska on 10/28/15.
  */
 @Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.JELLY_BEAN, manifest = "src/main/AndroidManifest.xml")
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricDataBindingTestRunner.class)
 public class ApplicationServiceTest {
     private MainActivity activity;
     private MainApp app;
@@ -31,6 +31,9 @@ public class ApplicationServiceTest {
 
     @Test
     public void testListView(){
-
+        ListView lv = (ListView) activity.findViewById(R.id.lv1);
+        for(int i=0; i < lv.getAdapter().getCount(); i++){
+            System.out.println(lv.getAdapter().getItem(i));
+        }
     }
 }
