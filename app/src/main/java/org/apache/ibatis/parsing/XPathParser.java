@@ -236,7 +236,8 @@ public class XPathParser {
       factory.setIgnoringElementContentWhitespace(false);
       factory.setCoalescing(false);
       factory.setExpandEntityReferences(true);
-
+      //enable below for unit test
+      //factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
       DocumentBuilder builder = factory.newDocumentBuilder();
       builder.setEntityResolver(entityResolver);
       builder.setErrorHandler(new ErrorHandler() {

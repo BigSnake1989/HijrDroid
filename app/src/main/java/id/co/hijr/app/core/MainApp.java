@@ -22,7 +22,8 @@ public class MainApp extends Application{
     public void onCreate() {
         super.onCreate();
         MainApp.context = getApplicationContext();
-        //copyDataBase("app.db");
+        //enable below for device test
+        copyDataBase("app.db");
         //copyDataBase("app.db","/sdcard/");
     }
 

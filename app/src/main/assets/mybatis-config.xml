@@ -25,8 +25,10 @@
 			<transactionManager type='JDBC' />
 			<dataSource type='UNPOOLED'>
 				<property name='driver' value='org.sqldroid.SQLDroidDriver'/>
-				<!-- <property name='url' value='jdbc:sqlite:/data/data/id.co.hijr.app/databases/app.db'/> -->
-				<property name='url' value='jdbc:sqlite:src/main/assets/app.db'/>
+				<!-- db path for device test -->
+				<property name='url' value='jdbc:sqlite:/data/data/id.co.hijr.app/databases/app.db'/>
+				<!-- db path for unit test -->
+				<!-- <property name='url' value='jdbc:sqlite:src/main/assets/app.db'/> -->
 			</dataSource>
 		</environment>
 	</environments>
