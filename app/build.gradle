@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 }
 configurations {
     all*.exclude group: 'commons-logging', module: 'commons-logging'
@@ -34,4 +38,6 @@ dependencies {
     compile 'org.javassist:javassist:3.17.1-GA'
     compile 'cglib:cglib:2.2.2'
     testCompile 'org.robolectric:robolectric:3.0'
+    compile 'org.roboguice:roboguice:3.+'
+    provided 'org.roboguice:roboblender:3.+'
 }

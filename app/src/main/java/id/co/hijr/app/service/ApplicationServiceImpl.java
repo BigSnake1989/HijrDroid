@@ -1,9 +1,9 @@
 package id.co.hijr.app.service;
 
+import com.google.inject.Inject;
+
 import id.co.hijr.app.dao.RoleDao;
-import id.co.hijr.app.dao.RoleDaoImpl;
 import id.co.hijr.app.dao.UserDao;
-import id.co.hijr.app.dao.UserDaoImpl;
 import id.co.hijr.app.domain.Role;
 import id.co.hijr.app.domain.User;
 
@@ -12,13 +12,12 @@ import id.co.hijr.app.domain.User;
  */
 public class ApplicationServiceImpl implements ApplicationService {
 
+    @Inject
     private UserDao userDao;
+
+    @Inject
     private RoleDao roleDao;
 
-    public ApplicationServiceImpl(){
-        userDao = new UserDaoImpl();
-        roleDao = new RoleDaoImpl();
-    }
 
     public void createUser(User user, Role role){
         role.setId(roleDao.newId());

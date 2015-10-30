@@ -2,7 +2,6 @@ package id.co.hijr.app;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +12,8 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 
+import com.google.inject.Inject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +23,9 @@ import id.co.hijr.app.dao.UserDaoImpl;
 import id.co.hijr.app.domain.Role;
 import id.co.hijr.app.domain.User;
 import id.co.hijr.app.service.ApplicationService;
-import id.co.hijr.app.service.ApplicationServiceImpl;
+import roboguice.activity.RoboActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends RoboActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     MainActivity m_this;
+
+    @Inject
+    ApplicationService appSvc;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<HashMap<String, Object>> m_data = new ArrayList<HashMap<String, Object>>();
 
 
-        ApplicationService appSvc = new ApplicationServiceImpl();
+
         User user = new User();
         user.setUsername("Epot");
         user.setName("Insert User");

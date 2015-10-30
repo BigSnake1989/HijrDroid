@@ -6,6 +6,7 @@ This is sample android project that uses mybatis for accessing database sqlite i
 - MyBatis (https://github.com/mybatis/mybatis-3)
 - Droid Java Beans (https://github.com/dthommes/droid-java-beans)
 - SQLDroid (https://github.com/SQLDroid/SQLDroid)
+- RoboGuice (https://github.com/roboguice/roboguice)
 
 ## Testing
 This project using Robolectric for unit testing (https://github.com/robolectric/robolectric), its very helping to test all functions from activity as controller to database with Data Access Object (DAO), its faster than using emulator. Three (3) files that you must configure regarding using the testing method, unit testing or emulator/device testing:
